@@ -3,6 +3,6 @@ project(mathspace C)
 
 set(CMAKE_C_STANDARD 17)
 
-set(SOURCE_FILES main.c math.c)
+set(SOURCE_FILES main.c twodims.c)
 
 add_executable(mathspace ${SOURCE_FILES})
