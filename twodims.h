@@ -19,10 +19,13 @@ extern const struct Point2DClass {
 /*
  * Segment in 2 Dimensional Space
  * Use two structures of Point2D as the end points
+ *
+ * Contains a method for get the length of a segment
  */
+
 struct Segment2D {
     struct Point2D p1, p2;
-    double (*lengthSegment2D)(struct Segment2D *this);
+    double (*lengthSegment2D)(struct Segment2D *self);
 };
 extern const struct Segment2DClass {
     struct Segment2D (*new)(struct Point2D p1, struct Point2D p2);
