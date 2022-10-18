@@ -38,9 +38,21 @@ struct Square2D {
     struct Point2D topLeftVertex;
     double width;
     double (*areaSquare2D)(struct Square2D *this);
+    double (*diagonalLengthSquare2D)(struct Square2D *this);
 };
 extern const struct Square2DClass {
     struct Square2D (*new)(struct Point2D topLeftVertex, double width);
 } Square2D;
+
+/*
+ * Triangle in a 2 Dimensional Space
+ * Use three structure of Point2D as the corners
+ */
+struct Triangle2D {
+    struct Point2D firstVertex, secondVertex, thirdVertex;
+};
+extern const struct Triangle2DCLass {
+    struct Triangle2D (*new)(struct Point2D firstVertex, struct Point2D secondVertex, struct Point2D thirdVertex);
+} Triangle2D;
 
 #endif //MATHSPACE_TWODIMS_H
