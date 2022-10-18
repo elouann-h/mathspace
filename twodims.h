@@ -22,13 +22,25 @@ extern const struct Point2DClass {
  *
  * Contains a method for get the length of a segment
  */
-
 struct Segment2D {
-    struct Point2D p1, p2;
-    double (*lengthSegment2D)(struct Segment2D *self);
+    struct Point2D firstExtremity, secondExtremity;
+    double (*lengthSegment2D)(struct Segment2D *this);
 };
 extern const struct Segment2DClass {
-    struct Segment2D (*new)(struct Point2D p1, struct Point2D p2);
+    struct Segment2D (*new)(struct Point2D firstExtremity, struct Point2D secondExtremity);
 } Segment2D;
+
+/*
+ * Square in a 2 Dimensional Space
+ * Use four structures of Point2D as the corners
+ */
+struct Square2D {
+    struct Point2D topLeftVertex;
+    double width;
+    double (*areaSquare2D)(struct Square2D *this);
+};
+extern const struct Square2DClass {
+    struct Square2D (*new)(struct Point2D topLeftVertex, double width);
+} Square2D;
 
 #endif //MATHSPACE_TWODIMS_H

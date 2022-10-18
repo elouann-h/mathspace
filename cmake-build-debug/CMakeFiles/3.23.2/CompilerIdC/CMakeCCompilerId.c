@@ -375,7 +375,7 @@
 #  define COMPILER_VERSION_TWEAK DEC(_MSC_BUILD)
 # endif
 
-#elif defined(__VISUALDSPVERSION__) || defined(__ADSPBLACKFIN__) || defined(__ADSPTS__) || defined(__ADSP21000__)
+#elif defined(__VISUALDSPVERSION__) || defined(__ADSPBLACKFIN__) || defined(__ADSPTS__) || defined(__ADSsecondExtremity1000__)
 # define COMPILER_ID "ADSP"
 #if defined(__VISUALDSPVERSION__)
   /* __VISUALDSPVERSION__ = 0xVVRRPP00 */
