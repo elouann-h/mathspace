@@ -5,6 +5,7 @@
 #include "twodims.h"
 
 #include <math.h>
+#include <stdio.h>
 
 // STRUCTURE: Point2D
 /**
@@ -128,15 +129,15 @@ static double areaTriangle2D(struct Triangle2D *this) {
     double thirdLength = thirdSide.lengthSegment2D(&thirdSide);
 
     // Assign the variables of the three sides
-    if (firstLength >= secondLength) { // The first side is the longest
-        if (secondLength >= thirdLength || firstLength >= thirdLength) {
+    if (firstLength > secondLength) { // The first side is the longest
+        if (secondLength > thirdLength || firstLength > thirdLength) {
             triangleBase = firstSide;
             triangleSideA = secondSide;
             triangleSideC = thirdSide;
         }
     }
-    else if (secondLength >= firstLength) { // The second side is the longest
-        if (firstLength >= thirdLength || secondLength >= thirdLength) {
+    else if (secondLength > firstLength) { // The second side is the longest
+        if (firstLength > thirdLength || secondLength > thirdLength) {
             triangleBase = secondSide;
             triangleSideA = firstSide;
             triangleSideC = thirdSide;
@@ -162,6 +163,8 @@ static double areaTriangle2D(struct Triangle2D *this) {
  * Use three structure of Point2D as the corners
  *
  * @param firstVertex The first vertex of the triangle
+ * @param secondVertex The second vertex of the triangle
+ * @param thirdVertex The third vertex of the triangle
  */
 static struct Triangle2D newTriangle2D(struct Point2D firstVertex, struct Point2D secondVertex, struct Point2D thirdVertex) {
     return (struct Triangle2D) {

@@ -65,9 +65,9 @@ square.diagonalLengthSquare2D(&square); // 4.242640687119285, the length of the 
 
 ```c
 // You will need three points (instances of Point2D)
-struct Point2D firstVertex = Point2D.new(1, 2);
-struct Point2D secondVertex = Point2D.new(3, 4);
-struct Point2D thirdVertex = Point2D.new(5, 6);
+struct Point2D firstVertex = Point2D.new(1, 1);
+struct Point2D secondVertex = Point2D.new(2, 4);
+struct Point2D thirdVertex = Point2D.new(1, 6);
 // Create a triangle
 struct Triangle2D triangle = Triangle2D.new(firstVertex, secondVertex, thirdVertex);
 // Attributes
@@ -75,6 +75,6 @@ triangle.firstVertex; // Point2D.new(1, 2), the first vertex of the triangle
 triangle.secondVertex; // Point2D.new(3, 4), the second vertex of the triangle
 triangle.thirdVertex; // Point2D.new(5, 6), the third vertex of the triangle
 // Methods
-triangle.areaTriangle2D(&triangle); // 0, the area of the triangle
+triangle.areaTriangle2D(&triangle); // , the area of the triangle
 triangle.perimeterTriangle2D(&triangle); // 6.82842712474619, the perimeter of the triangle
 ```
