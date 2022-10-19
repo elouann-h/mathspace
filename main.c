@@ -8,12 +8,14 @@
 #include <math.h>
 
 int main(void) {
-    printf("Hello, World!\n");
-    // Create a square at the origin
-    struct Point2D a = Point2D.new(7., 7.);
-    struct Square2D square = Square2D.new(a, 3);
-
-    printf("Aire:%f\nDiagonale:%f", square.areaSquare2D(&square), square.diagonalLengthSquare2D(&square));
+    // Create a triangle
+    struct Point2D firstVertex = Point2D.new(0, 0);
+    struct Point2D secondVertex = Point2D.new(0, 1);
+    struct Point2D thirdVertex = Point2D.new(1, 0);
+    struct Triangle2D triangle = Triangle2D.new(firstVertex, secondVertex, thirdVertex);
+    // Print the area of the triangle using Heron's formula
+    double triangleArea = triangle.areaTriangle2D(&triangle);
+    printf("The area of the triangle is: %f", triangleArea);
 
     return 0;
 }

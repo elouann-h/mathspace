@@ -19,8 +19,6 @@ extern const struct Point2DClass {
 /*
  * Segment in 2 Dimensional Space
  * Use two structures of Point2D as the end points
- *
- * Contains a method for get the length of a segment
  */
 struct Segment2D {
     struct Point2D firstExtremity, secondExtremity;
@@ -50,6 +48,8 @@ extern const struct Square2DClass {
  */
 struct Triangle2D {
     struct Point2D firstVertex, secondVertex, thirdVertex;
+    double (*areaTriangle2D)(struct Triangle2D *this);
+    double (*perimeterTriangle2D)(struct Triangle2D *this);
 };
 extern const struct Triangle2DCLass {
     struct Triangle2D (*new)(struct Point2D firstVertex, struct Point2D secondVertex, struct Point2D thirdVertex);
