@@ -61,6 +61,7 @@ static double xIntercept(struct NonVerticalLine2D *this) {
     // Get the x intercept of the line
     double xIntercept = -this->yIntercept / this->leadingCoefficient;
     return xIntercept;
+}
 /**
  * Line which cannot be vertical in 2 Dimensional Space
  *
@@ -70,7 +71,8 @@ static double xIntercept(struct NonVerticalLine2D *this) {
 static struct NonVerticalLine2D newNonVerticalLine2D(double leadingCoefficient, double yIntercept) {
     return (struct NonVerticalLine2D) {
         .leadingCoefficient=leadingCoefficient,
-        .yIntercept=yIntercept
+        .yIntercept=yIntercept,
+        .xIntercept=xIntercept
     };
 }
 const struct NonVerticalLine2DClass NonVerticalLine2D={.new=&newNonVerticalLine2D};
