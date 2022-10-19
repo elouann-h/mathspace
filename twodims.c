@@ -51,6 +51,31 @@ static struct Segment2D newSegment2D(struct Point2D firstExtremity, struct Point
 const struct Segment2DClass Segment2D={.new=&newSegment2D};
 
 
+// STRUCTURE: NonVerticalLine2D
+/**
+ * Return the x intercept of a NonVerticalLine2D instance
+ *
+ * @param this The NonVerticalLine2D instance
+ */
+static double xIntercept(struct NonVerticalLine2D *this) {
+    // Get the x intercept of the line
+    double xIntercept = -this->yIntercept / this->leadingCoefficient;
+    return xIntercept;
+/**
+ * Line which cannot be vertical in 2 Dimensional Space
+ *
+ * @param leadingCoefficient The leading coefficient of the line
+ * @param yIntercept The y-intercept of the line
+ */
+static struct NonVerticalLine2D newNonVerticalLine2D(double leadingCoefficient, double yIntercept) {
+    return (struct NonVerticalLine2D) {
+        .leadingCoefficient=leadingCoefficient,
+        .yIntercept=yIntercept
+    };
+}
+const struct NonVerticalLine2DClass NonVerticalLine2D={.new=&newNonVerticalLine2D};
+
+
 // STRUCTURE: Square2D
 /**
  * Return the area of a Square2D instance
