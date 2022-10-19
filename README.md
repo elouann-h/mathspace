@@ -1,9 +1,6 @@
 # Mathspace library
 
 There is the first library I made for my own. This library contains structs which are geometric objects.
-
-## Content
-
 Currently, the library contains the following structs:
 - Two dimensional geometrical objects: Point, Segment, Square, Triangle
 
