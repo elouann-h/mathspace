@@ -9,22 +9,36 @@
 
 // STRUCTURE: Point2D
 /**
- * Point in 2 Dimensional Space
+ * Returns the distance between the point and another.
  *
- * @param x The x coordinate of the point
- * @param y The y coordinate of the point
+ * @param this The Point2D instance.
+ * @param other The other point.
+ */
+static double distancePoint2D(struct Point2D *this, struct Point2D *other) {
+    struct Segment2D segment = Segment2D.new(*this, *other);
+    return segment.lengthSegment2D(&segment);
+}
+/**
+ * Point in 2 Dimensional space.
+ *
+ * @param x The x coordinate of the point.
+ * @param y The y coordinate of the point.
  */
 static struct Point2D newPoint2D(double x, double y) {
-    return (struct Point2D){.x=x, .y=y};
+    return (struct Point2D){
+        .x=x,
+        .y=y,
+        .distancePoint2D=distancePoint2D
+    };
 }
 const struct Point2DClass Point2D={.new=&newPoint2D};
 
 
 // STRUCTURE: Segment2D
 /**
- * Return the length of a Segment2D instance
+ * Return the length of a Segment2D instance.
  *
- * @param this The Segment2D instance
+ * @param this The Segment2D instance.
  */
 static double lengthSegment2D(struct Segment2D *this) {
     // Get the difference between the x and y coordinates of the two end points
@@ -35,11 +49,11 @@ static double lengthSegment2D(struct Segment2D *this) {
     return length;
 }
 /**
- * Segment in 2 Dimensional Space
- * Use two structures of Point2D as the end points
+ * Segment in 2 Dimensional space.
+ * Use two structures of Point2D as the end points.
  *
- * @param firstExtremity The first end point of the segment
- * @param secondExtremity The second end point of the segment
+ * @param firstExtremity The first end point of the segment.
+ * @param secondExtremity The second end point of the segment.
  */
 static struct Segment2D newSegment2D(struct Point2D firstExtremity, struct Point2D secondExtremity) {
     return (struct Segment2D) {
@@ -53,9 +67,9 @@ const struct Segment2DClass Segment2D={.new=&newSegment2D};
 
 // STRUCTURE: SlopingLine2D
 /**
- * Return the x intercept of a SlopingLine2D instance
+ * Return the x intercept of a SlopingLine2D instance.
  *
- * @param this The SlopingLine2D instance
+ * @param this The SlopingLine2D instance.
  */
 static double xIntercept(struct SlopingLine2D *this) {
     // Get the x intercept of the line
@@ -63,10 +77,10 @@ static double xIntercept(struct SlopingLine2D *this) {
     return xIntercept;
 }
 /**
- * Line which cannot be vertical in 2 Dimensional Space
+ * Line which cannot be vertical in 2 Dimensional space.
  *
- * @param leadingCoefficient The leading coefficient of the line
- * @param yIntercept The y-intercept of the line
+ * @param leadingCoefficient The leading coefficient of the line.
+ * @param yIntercept The y-intercept of the line.
  */
 static struct SlopingLine2D newSlopingLine2D(double leadingCoefficient, double yIntercept) {
     return (struct SlopingLine2D) {
@@ -80,17 +94,17 @@ const struct SlopingLine2DClass SlopingLine2D={.new=&newSlopingLine2D};
 
 // STRUCTURE: Square2D
 /**
- * Return the area of a Square2D instance
+ * Return the area of a Square2D instance.
  *
- * @param this The Square2D instance
+ * @param this The Square2D instance.
  */
 static double areaSquare2D(struct Square2D *this) {
     return pow(this->width, 2);
 }
 /**
- * Return the length of the diagonal of a Square2D instance
+ * Return the length of the diagonal of a Square2D instance.
  *
- * @param this The Square2D instance
+ * @param this The Square2D instance.
  */
 static double diagonalLengthSquare2D(struct Square2D *this) {
     // Get the point placed at the opposite corners of the square (bottom right)
@@ -103,10 +117,10 @@ static double diagonalLengthSquare2D(struct Square2D *this) {
     return diagonal.lengthSegment2D(&diagonal);
 }
 /**
- * Square in a 2 Dimensional Space
- * Use four structures of Point2D as the corners
+ * Square in a 2 Dimensional space.
+ * Use four structures of Point2D as the corners.
  *
- * @param topLeftVertex The top left vertex of the square
+ * @param topLeftVertex The top left vertex of the square.
  */
 static struct Square2D newSquare2D(struct Point2D topLeftVertex, double width) {
     return (struct Square2D) {
@@ -121,9 +135,9 @@ const struct Square2DClass Square2D={.new=&newSquare2D};
 
 // STRUCTURE: Triangle2D
 /**
- * Returns the perimeter of a Triangle2D instance
+ * Returns the perimeter of a Triangle2D instance.
  *
- * @param this The Triangle2D instance
+ * @param this The Triangle2D instance.
  */
 static double perimeterTriangle2D(struct Triangle2D *this) {
     // Create three segments with the three points
@@ -134,9 +148,9 @@ static double perimeterTriangle2D(struct Triangle2D *this) {
     return firstSide.lengthSegment2D(&firstSide) + secondSide.lengthSegment2D(&secondSide) + thirdSide.lengthSegment2D(&thirdSide);
 }
 /**
- * Returns the area of a Triangle2D instance using Heron's formula
+ * Returns the area of a Triangle2D instance using Heron's formula.
  *
- * @param this The Triangle2D instance
+ * @param this The Triangle2D instance.
  */
 static double areaTriangle2D(struct Triangle2D *this) {
     // Initialize the variables of the three sides for the Heron's formula
@@ -186,12 +200,12 @@ static double areaTriangle2D(struct Triangle2D *this) {
     return area;
 }
 /**
- * Triangle in a 2 Dimensional Space
- * Use three structure of Point2D as the corners
+ * Triangle in a 2 Dimensional space.
+ * Use three structure of Point2D as the corners.
  *
- * @param firstVertex The first vertex of the triangle
- * @param secondVertex The second vertex of the triangle
- * @param thirdVertex The third vertex of the triangle
+ * @param firstVertex The first vertex of the triangle.
+ * @param secondVertex The second vertex of the triangle.
+ * @param thirdVertex The third vertex of the triangle.
  */
 static struct Triangle2D newTriangle2D(struct Point2D firstVertex, struct Point2D secondVertex, struct Point2D thirdVertex) {
     return (struct Triangle2D) {

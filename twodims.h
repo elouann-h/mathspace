@@ -8,6 +8,7 @@
 struct Point2D {
     double x;
     double y;
+    double (*distancePoint2D)(struct Point2D *this, struct Point2D *other);
 };
 extern const struct Point2DClass {
     struct Point2D (*new)(double x, double y);
