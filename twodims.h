@@ -21,13 +21,13 @@ extern const struct Segment2DClass {
     struct Segment2D (*new)(struct Point2D firstExtremity, struct Point2D secondExtremity);
 } Segment2D;
 
-struct NonVerticalLine2D {
+struct SlopingLine2D {
     double leadingCoefficient, yIntercept;
-    double (*xIntercept)(struct NonVerticalLine2D *this);
+    double (*xIntercept)(struct SlopingLine2D *this);
 };
-extern const struct NonVerticalLine2DClass {
-    struct NonVerticalLine2D (*new)(double leadingCoefficient, double yIntercept);
-} NonVerticalLine2D;
+extern const struct SlopingLine2DClass {
+    struct SlopingLine2D (*new)(double leadingCoefficient, double yIntercept);
+} SlopingLine2D;
 
 struct Square2D {
     struct Point2D topLeftVertex;

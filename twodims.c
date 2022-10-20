@@ -51,13 +51,13 @@ static struct Segment2D newSegment2D(struct Point2D firstExtremity, struct Point
 const struct Segment2DClass Segment2D={.new=&newSegment2D};
 
 
-// STRUCTURE: NonVerticalLine2D
+// STRUCTURE: SlopingLine2D
 /**
- * Return the x intercept of a NonVerticalLine2D instance
+ * Return the x intercept of a SlopingLine2D instance
  *
- * @param this The NonVerticalLine2D instance
+ * @param this The SlopingLine2D instance
  */
-static double xIntercept(struct NonVerticalLine2D *this) {
+static double xIntercept(struct SlopingLine2D *this) {
     // Get the x intercept of the line
     double xIntercept = -this->yIntercept / this->leadingCoefficient;
     return xIntercept;
@@ -68,14 +68,14 @@ static double xIntercept(struct NonVerticalLine2D *this) {
  * @param leadingCoefficient The leading coefficient of the line
  * @param yIntercept The y-intercept of the line
  */
-static struct NonVerticalLine2D newNonVerticalLine2D(double leadingCoefficient, double yIntercept) {
-    return (struct NonVerticalLine2D) {
+static struct SlopingLine2D newSlopingLine2D(double leadingCoefficient, double yIntercept) {
+    return (struct SlopingLine2D) {
         .leadingCoefficient=leadingCoefficient,
         .yIntercept=yIntercept,
         .xIntercept=xIntercept
     };
 }
-const struct NonVerticalLine2DClass NonVerticalLine2D={.new=&newNonVerticalLine2D};
+const struct SlopingLine2DClass SlopingLine2D={.new=&newSlopingLine2D};
 
 
 // STRUCTURE: Square2D
